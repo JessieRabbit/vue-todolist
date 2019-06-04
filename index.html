@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>vue todolist</title>
+</head>
+
+<body class="backColor">
+    <div class="appTodolist container">
+        <label class="fontColor">※按下鍵盤enter查詢</label>
+        <div class="input-wrapper">
+            <input type="text" placeholder="please enter todolist" @keyup.enter="addTodo(newTodo)" v-model="newTodo">
+        </div>
+        <div class="btnPadding">
+            <button type="button" class="btn btn-outline-success" @click.prevent="allFinishTodo()">全部做完</button>
+            <button type="button" class="btn btn-outline-danger" @click.prevent="allResetTodo()">全部重置</button>
+        </div>
+        <h2>事項列表</h2>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" href="#" @click.prevent="allShowTodo('all')"
+                    :class="{ active: activeStatus === 'all' }">全部顯示</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" @click.prevent="yesDealWith('yes')"
+                    :class="{ active: activeStatus === 'yes' }">已處理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" @click.prevent="noDealWith('no')"
+                    :class="{ active: activeStatus === 'no' }">未處理</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>選取</th>
+                        <th>項目</th>
+                        <th>事件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(todo, index) in todos" :class="{ completedColor: todo.completed }">
+                        <td><input type="checkbox" v-model="todo.completed"></td>
+                        <td> {{ todo.content }}</td>
+                        <td><a href="#" @click.prevent="removeTodo(todo)">刪除</a></td>
+                    </tr>
+                    <!--無資料-->
+                    <template v-if="todos.length === 0">
+                        <tr>
+                            <td colspan="3" class="noDataPos">
+                                ~無事項~
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- vue cdn unpkg-->
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script src="js/all.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+.completedColor {
+    background-color: #fa8072 !important;
+}
+
+.backColor {
+    background-color: #e9967a;
+}
+
+.container {
+    background-color: #ffffff;
+    padding-bottom: 500px;
+    /*下面拉長*/
+}
+
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("searchicon.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+
+.input-wrapper:before {
+    font-family: "FontAwesome";
+    content: "\f067";
+    position: absolute;
+    left: 133px;
+    top: 48px;
+}
+
+.fontColor {
+    color: red;
+}
+
+.btnPadding {
+    padding-top: 6px;
+}
+
+.noDataPos {
+    text-align: center;
+}
